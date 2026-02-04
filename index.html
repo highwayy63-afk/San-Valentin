@@ -2,135 +2,148 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Para Valia 💖</title>
+<title>Johann 💘 Valia</title>
 
 <style>
 body {
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    height: 100vh;
     margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #020024, #090979, #000);
+    font-family: Arial, sans-serif;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .card {
-    background: white;
-    padding: 40px;
+    background: rgba(0,0,0,0.7);
+    padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    width: 90%;
     max-width: 400px;
+    width: 90%;
+    box-shadow: 0 0 20px rgba(0,150,255,0.5);
 }
 
 h1 {
-    color: #e91e63;
-    font-size: 28px;
+    color: #00bfff;
 }
 
 p {
     font-size: 18px;
 }
 
-.buttons {
-    margin-top: 25px;
-    position: relative;
-    height: 80px;
-}
-
 button {
+    margin: 10px;
     padding: 12px 25px;
-    font-size: 16px;
     border: none;
     border-radius: 25px;
+    font-size: 16px;
     cursor: pointer;
+    background: #00bfff;
+    color: black;
     transition: 0.3s;
 }
 
-#yes {
-    background: #e91e63;
-    color: white;
+button:hover {
+    background: #0099cc;
 }
 
-#yes:hover {
-    background: #c2185b;
+#batman {
+    font-size: 50px;
 }
 
-#no {
-    background: #ccc;
-    position: absolute;
-}
-
-.heart {
-    font-size: 40px;
-    animation: latido 1s infinite;
-}
-
-@keyframes latido {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1); }
-}
 </style>
 </head>
 
 <body>
 
-<div class="card">
-    <div class="heart">💖</div>
+<div class="card" id="card">
 
-    <h1>Valia 💕</h1>
+<div id="batman">🦇</div>
 
-    <p>
-        Desde que llegaste a mi vida,<br>
-        todo es más bonito ✨<br><br>
-        ¿Quieres ser mi San Valentín? 💘
-    </p>
+<h1>JOHANN<br>EL SEÑOR DE LA NOCHE</h1>
 
-    <div class="buttons">
-        <button id="yes">💖 Sí 💖</button>
-        <button id="no">No 🙈</button>
-    </div>
+<p id="question">
+Valia… 🌙<br>
+¿Te gusta hablar conmigo? 💬
+</p>
+
+<div id="buttons">
+<button onclick="next(1)">Sí 😊</button>
+<button onclick="next(0)">Más o menos 😏</button>
+</div>
+
 </div>
 
 <script>
-const noBtn = document.getElementById("no");
-const yesBtn = document.getElementById("yes");
 
-noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * 250;
-    const y = Math.random() * 60;
+let step = 0;
 
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-});
+const questions = [
+    {
+        q: "Valia… 🌙<br>¿Te gusta hablar conmigo? 💬",
+        a1: "Sí 😊",
+        a2: "Más o menos 😏"
+    },
+    {
+        q: "¿Te saco sonrisas a veces? 😁",
+        a1: "Sí 😍",
+        a2: "A veces 🙈"
+    },
+    {
+        q: "¿Me darías una oportunidad? 🥺💙",
+        a1: "Sí 💖",
+        a2: "Tal vez 😳"
+    },
+    {
+        q: "Última pregunta… 💘<br>¿Quieres ser mi San Valentín?",
+        a1: "SÍÍ 😍🔥",
+        a2: "Obvio pues 💕"
+    }
+];
 
-yesBtn.addEventListener("click", () => {
-    document.body.innerHTML = `
-        <div style="
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            height:100vh;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            font-family:Arial;
-            text-align:center;
-        ">
+function next(choice){
 
-            <h1 style="color:#e91e63;">💘 Sabía que dirías que sí 💘</h1>
+    step++;
 
-            <p style="font-size:22px;">
-                Gracias por hacerme tan feliz, Valia ❤️<br>
-                Te quiero mucho 😘
+    if(step < questions.length){
+
+        document.getElementById("question").innerHTML =
+            questions[step].q;
+
+        document.getElementById("buttons").innerHTML = `
+            <button onclick="next(1)">
+                ${questions[step].a1}
+            </button>
+            <button onclick="next(0)">
+                ${questions[step].a2}
+            </button>
+        `;
+
+    } else {
+
+        document.getElementById("card").innerHTML = `
+            <div id="batman">🦇💖</div>
+
+            <h1>Valia 😍</h1>
+
+            <p style="font-size:20px;">
+            Gracias por decir que sí 💘<br><br>
+
+            Atte:<br>
+            <b>JOHANN,<br>
+            EL SEÑOR DE LA NOCHE</b> 🌙🦇❤️
             </p>
 
-            <div style="font-size:50px;">🥰💖😍💘</div>
-        </div>
-    `;
-});
+            <div style="font-size:40px;">
+            😘💖😍💘
+            </div>
+        `;
+    }
+}
+
 </script>
 
 </body>
