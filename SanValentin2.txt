@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Johann 💘 Valia</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #020024, #090979, #000);
+    font-family: Arial, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card {
+    background: rgba(0,0,0,0.7);
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 0 20px rgba(0,150,255,0.5);
+}
+
+h1 {
+    color: #00bfff;
+}
+
+p {
+    font-size: 18px;
+}
+
+button {
+    margin: 10px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #00bfff;
+    color: black;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0099cc;
+}
+
+#batman {
+    font-size: 50px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+
+<div id="batman">🦇</div>
+
+<h1>JOHANN<br>EL SEÑOR DE LA NOCHE</h1>
+
+<p id="question">
+Valia… 🌙<br>
+¿Te gusta hablar conmigo? 💬
+</p>
+
+<div id="buttons">
+<button onclick="next(1)">Sí 😊</button>
+<button onclick="next(0)">Más o menos 😏</button>
+</div>
+
+</div>
+
+<script>
+
+let step = 0;
+
+const questions = [
+    {
+        q: "Valia… 🌙<br>¿Te gusta hablar conmigo? 💬",
+        a1: "Sí 😊",
+        a2: "Más o menos 😏"
+    },
+    {
+        q: "¿Te saco sonrisas a veces? 😁",
+        a1: "Sí 😍",
+        a2: "A veces 🙈"
+    },
+    {
+        q: "¿Me darías una oportunidad? 🥺💙",
+        a1: "Sí 💖",
+        a2: "Tal vez 😳"
+    },
+    {
+        q: "Última pregunta… 💘<br>¿Quieres ser mi San Valentín?",
+        a1: "SÍÍ 😍🔥",
+        a2: "Obvio pues 💕"
+    }
+];
+
+function next(choice){
+
+    step++;
+
+    if(step < questions.length){
+
+        document.getElementById("question").innerHTML =
+            questions[step].q;
+
+        document.getElementById("buttons").innerHTML = `
+            <button onclick="next(1)">
+                ${questions[step].a1}
+            </button>
+            <button onclick="next(0)">
+                ${questions[step].a2}
+            </button>
+        `;
+
+    } else {
+
+        document.getElementById("card").innerHTML = `
+            <div id="batman">🦇💖</div>
+
+            <h1>Valia 😍</h1>
+
+            <p style="font-size:20px;">
+            Gracias por decir que sí 💘<br><br>
+
+            Atte:<br>
+            <b>JOHANN,<br>
+            EL SEÑOR DE LA NOCHE</b> 🌙🦇❤️
+            </p>
+
+            <div style="font-size:40px;">
+            😘💖😍💘
+            </div>
+        `;
+    }
+}
+
+</script>
+
+</body>
+</html>
+
